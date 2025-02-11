@@ -1,0 +1,57 @@
+CLASS 0
+
+Backend Systems
+
+Why? What? How?
+
+Company -> x, y, z 
+
+Ex. Ticket Booking Application
+BookMyShow, District
+Metro Booking, IRCTC
+
+App/Website
+Movie Ticket
+Kind, Time, People?
+1) We can add the specific data
+2) Choose from options
+
+
+BackEnd 
+1) To check, if seats are available
+2) Let the theater know 
+3) reciept 
+
+Communicate from the client to the server (Company side)
+
+Client -> Browser   -> API ->    Server  ->         Database
+        (React part)
+Form                    Req,    Serve-r             data is stored
+Validation              Res     (Serving data)      here
+
+NodeJs - Js runtime to manage the project
+Express Js - To Create Routes and set the project up (API)
+MongoDB - storing the data
+Security-
+    1. Password Encryption 
+    2. Database Protection
+    3. Server Protection
+    4. (dev env) Hiding our private keys 
+Authentication - users? stays logged in?
+Data Validation - mongoose
+WebRTC - chat applications
+Final Project 
+
+
+
+bookymyshow.in<-----> bmsserver.com
+    
+
+TikTok News - Data Breach 
+Tencent Games 
+
+
+
+
+
+

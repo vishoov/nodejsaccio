@@ -1,4 +1,67 @@
 CLASS 1
 
-Backend Systems
+NodeJs
+1) initialise an empty nodejs project
 
+    terminal - npm init -y
+
+SERVER -> delegation of technical tasks
+MAIN-> endpoint of the project meaning that when we deploy this, 
+        this file is used to access all the project features
+
+
+Q-> whats the use of package.json ->
+it contains the technical specifications like version, name, authors, custom scripts, 
+listing the packages of the project
+Q-> difference between package-lock.json and package.json -> 
+    pckage-lock contains the stable current versions of the packages that we have used in our projects
+Q-> How can we write custom scripts for our projects                                 
+        we can write custom scripts in scripts section of package.json
+Custom Scripts-> helpful in case of production environment 
+
+Tech Environments
+
+1) development env -> API  -> building and testing 
+        - monitor the working of api, debug, create tokens, error handling 
+2) production environment -> Deployed  -> error free 
+        - only functionality and the features are used
+
+
+
+2) Setup the project
+    package - express.js
+                - routing, security, authentication, handling the data
+
+    1) npm install express
+    2) in index.js -> const express = require("express") -> imports express
+    3) const app = express() -> intialised the express app
+
+    PORT Listener?
+
+    Network ports 
+
+
+API
+
+
+
+
+
+
+
+
+
+
+
+
+ecommerce application
+
+oral health products 
+toothbrush, toothpaste, flosser, mouthwash
+
+A route is a location for a specific set of information 
+
+routing
+
+HTTP Protocol 
+    Methods - GET, PUT, POST, DELETE, PATCH
