@@ -43,6 +43,10 @@ Tech Environments
 
 API
 
+Routing 
+Req, Res
+Route Paramaters
+Query Parameter
 
 
 
