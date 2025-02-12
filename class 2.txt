@@ -1,0 +1,104 @@
+
+Client-  API -  Server   - DB
+        Express-  Node.Js 
+
+Node.Js provides the runtime on which all of this logic works
+FE    ->Backend Part->  
+
+Express.Js
+- Its responsible for API Design 
+- Routing
+- Security
+- Authentication 
+
+Middlewares - the functions that are called BEFORE
+            the routes that we want to PROTECT
+            - help us in integrating functionalities of reading 
+            and writing json files
+
+    -pre built Middlewares - compatibility of json, url encoding
+    -custom middlewares - logging, security and so on 
+
+why middlewares? 
+
+Middle of request and response 
+
+
+Routing, handlers, why are we using express?
+
+Express:
+    It helps in scalable api design
+    it provides security implementation 
+    it provides middlewares 
+    - it treats request and response as objects 
+
+MVC Server Architecture - ?     
+
+
+Set Up MongoDB
+
+
+
+
+Visa, MasterCard -> signup, login, post pay 
+
+Payment Methods 
+
+
+    sender         [UPI]             reciever
+     a               ->                   b
+
+1. sender_id -> user logs in 
+2. reciever_id -> QR, input
+3. Bank security key
+4. Money is sent
+
+
+    sender_id       verified        reciever_id
+
+
+
+Route to change password of a user 
+
+
+HTTP Network Protocol
+
+Client  -> request -> API -> server -> responds 
+            1           2               3 
+    <----------------------------------|            
+
+
+
+ // Req
+        // - req.params -> objects of parameters in the url -> route parameters
+        // - req.query -> objects of query parameters in the url -> query parameters
+        // - req.body -> objects of data sent in the body of the request -> body parameters
+        // - req.headers -> objects of headers sent in the request -> headers parameters
+        // JSON -> Headers, body
+        //req.method -> method of the request -> GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD, etc
+        // req.url -> url of the request -> /about, /signup, /users, etc
+
+   //Res
+        // - res.send() -> sends a response to the client
+        // - res.json()-> sends a json response to the client
+        // - res.render() -> renders a view template
+        // - res.redirect() -> redirects to another route
+
+
+Nodemon! - restarts the server whenever a new code snippet is saved
+
+
+Flow of a http request
+1. Client sends a Request        amazon.in signup user_info 
+2. The request is sent through the API 
+3. Express before calling the route handler, as soon as it receieves a request,
+        it checks the middleware logics
+
+
+
+        2 methods of using middleware
+            - app.use() -> applies to routes after it 
+            - we can write it in the middle of a route handler
+
+4. After the middleware has executed and next is called
+5. Response is sent back to the client 

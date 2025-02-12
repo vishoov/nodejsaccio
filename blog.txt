@@ -1,0 +1,122 @@
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+const loggingfunction = (req, res, next)=>{
+    //where did the request come from
+    const url = req.url;
+    //whats the method of the request
+    const method = req.method;
+    //when did the request come?
+    const time = new Date().toString();
+    //log the request
+    console.log(`METHOD: ${method} URL: ${url} TIME: ${time}`);
+    //move to the next middleware
+    next();
+}
+
+// logg-ing -> console.log()
+
+let blogs = [
+    {
+        id:0,
+        title: "Blog Title",
+        content: "Blog Content"
+    },
+    {
+        id:1,
+        title: "Blog Title 1",
+        content: "Blog Content 1"
+    },
+    {
+        id:2,
+        title: "Blog Title 2",
+        content: "Blog Content 2"
+    }
+]
+
+
+//middleware logging 
+app.use(loggingfunction);
+
+//routes
+app.get("/", (req, res)=>{
+    res.send("Welcome to the Blog API");
+});
+
+
+
+
+//create a new blog
+app.post("/create", (req, res)=>{
+    let blog = req.body;
+    blogs.push(blog);
+    res.send("Blog created successfully");
+});
+
+
+//get all the blogs 
+app.get("/blogs", (req, res)=>{
+    res.json(blogs);
+
+})
+
+
+//get a single blog based on ID
+// localhost:3000/blog/id
+app.get("/blog/:id", (req, res)=>{
+
+    const blogID = req.params.id;
+
+    const blog = blogs.find((blog)=>{
+        return blog.id == blogID;
+    });
+
+
+    res.send(blog);
+})
+
+
+
+//update a blog based on ID 
+app.put("/update/:id", (req, res)=>{
+    //extract the id of the blog that you want to update
+    const blogID = req.params.id;
+    
+    //find the blog that you want to update using the id
+    const blog = blogs.find((blog)=>{
+        return blog.id == blogID;
+    });
+
+    //update the blog
+    blog.title = req.body.title;
+    blog.content = req.body.content;
+
+
+    //update the blog in the blogs array
+    blogs[blogID] = blog;
+
+    //send a response to the user
+    res.send("Blog updated successfully");
+})
+
+
+//delete a blog based on ID
+app.delete("/delete/:id", (req, res)=>{
+    const blogID = req.params.id;
+
+    blogs = blogs.filter((blog)=>{
+        return blog.id != blogID;
+    });
+
+    res.send("Blog deleted successfully");
+})
+
+
+
+
+//app listener
+app.listen(3000, ()=>{
+    console.log('Server is running on port 3000');
+})

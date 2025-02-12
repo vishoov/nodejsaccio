@@ -3,13 +3,43 @@ const express = require('express');
 //initialise a backend application
 const app = express();
 
+//json parser
+// pre-built middleware
+app.use(express.json());
+//app.use(function)-> middleware
+//logging middleware
+// app.use(custom function)
+app.use((req, res, next)=>{
+
+    //middleware 
+    const method = req.method;
+    const url = req.url;
+    const time = new Date().toString();
+
+    console.log(`METHOD: ${method}, URL: ${url}, TIME: ${time}`);
+
+
+    //this middleware has been executed and you can pass onto the next middleware or route handler
+    next();
+
+})
+
+
+// app.use((req, res, next)=>{
+//     console.log("Middleware executed");
+//     next();
+// })    
+
+
 
 // localhost:3000/
+
+
 
 //routes for the application
 //root route
 app.get('/', (req, res)=>{
-    res.send('Hello World');
+    res.json({message:"Hello World"});
 });
 //route syntax
 // app.method("route", callback function or a handler function)
@@ -21,13 +51,34 @@ app.get('/', (req, res)=>{
         res.send('<h1>About Page</h1><br><p>This is the about page</p>');
     });
 
-    app.post("/signup", (req, res)=>{
+    const middleware = (req, res, next)=>{
+        console.log("Middleware executed");
+        next();
+    }
+
+    app.post("/signup", middleware,(req, res)=>{
         const user = req.body;
+    
+        // console.log(method);
         console.log(user);
         //signup logic
         res.send("User signed up successfully"); 
     });
 
+    // Req
+        // - req.params -> objects of parameters in the url -> route parameters
+        // - req.query -> objects of query parameters in the url -> query parameters
+        // - req.body -> objects of data sent in the body of the request -> body parameters
+        // - req.headers -> objects of headers sent in the request -> headers parameters
+        // JSON -> Headers, body
+        //req.method -> method of the request -> GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD, etc
+        // req,url -> url of the request -> /about, /signup, /users, etc
+
+    //Res
+        // - res.send() -> sends a response to the client
+        // - res.json()-> sends a json response to the client
+        // - res.render() -> renders a view template
+        // - res.redirect() -> redirects to another route
 
 
 
@@ -38,6 +89,10 @@ app.get('/', (req, res)=>{
         const username = req.params.username;
         res.send(`Welcome ${username}`);
     })
+    // it depends on some data present in the db
+    //instagram: users -> document in the db
+
+
 
     //Query Parameters
     app.get("/search", (req, res)=>{
@@ -46,7 +101,7 @@ app.get('/', (req, res)=>{
         res.send("Search results");
         //searching logic in the database 
     })
-    
+    //searching, filtering, sorting etc 
     
 
 
