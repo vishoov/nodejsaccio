@@ -1,0 +1,86 @@
+Databases
+
+1. Relational -SQL
+2. Non Relational- MongoDB json based
+
+What is?
+Relational - strictly structured, fast, highly scalable
+Non Relation - flexible, json based, most compatible with mern stack
+
+Uses
+Relational - Ex. Google, amazon, products with high number of users
+            whose schemas (data blueprint) are fixed
+
+Non-relational - Ex. Startups, that keep evolving their data
+
+
+
+
+MongoDB
+
+the most perfect database for MERN stack
+because it is json object based 
+
+
+api route
+
+app.post("/signup", (req, res)=>{
+    const user = req.body;
+
+}
+
+Database/Cluster -> physical container where our data is stored
+
+Collections: these are groups of mongodb documents or groups of
+data that we can use for one or more projects 
+
+
+Blinkit/Zepto/Instamart->
+Quick Commerce
+
+user data -> name, phone number, address
+Store Data -> name, location, inventory, delivery_range
+Products -> name, description, images, prices, expiry date
+Delivery Partners -> name, id, account, vehicle details
+Customer Support History -> problem, refund status, payment method 
+
+
+
+MongoDB->
+- Rich Query Support (Mongoose) 
+- Efficient
+- Automatic Sharding 
+        - 10000 users (Vertical Scaling)
+        - 10000-> 20000 
+        - multiple servers 
+        - horizontal scaling (increasing the number of servers)
+
+
+
+MONGODB Start
+
+1. install mongodb community server and mongodb compass
+2. open compass and create a new connection string
+3. open mongodb shell -> terminal for database 
+
+Querying in the mongoshell!
+
+1) show dbs -> this lists all the databases present on your local system
+2) use <db_name> -> this lists all the dbs present in your system or if any db doesnt exist, it will create a new db with that name
+3) db.createCollection("collection_name") -> create a collection 
+
+Cluster -> Databases -> Collections -> Documents
+
+
+CRUD Operation
+
+Create Operations:
+1. insert one entry -> db.collection.insertOne({})
+2. insert multiples entries -> db.collection.insertMany([{}, {}, {}])
+
+Read 
+
+1. db.collection.find({
+    querying conditions 
+})
+2. db.collection.findOne()
