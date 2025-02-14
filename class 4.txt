@@ -74,13 +74,176 @@ Cluster -> Databases -> Collections -> Documents
 
 CRUD Operation
 
+DB -> Interact 
+
+
 Create Operations:
 1. insert one entry -> db.collection.insertOne({})
 2. insert multiples entries -> db.collection.insertMany([{}, {}, {}])
 
-Read 
+//ecommerce -> new product -> insertOne()
+
+
+Read  Or querying logics 
 
 1. db.collection.find({
     querying conditions 
 })
 2. db.collection.findOne()
+
+Products 
+
+monitors -> greater than 24
+
+product = {
+    name: monitors
+    size: 22inches,
+    company: lg
+}
+
+db.users.find({age: { $gt : 20 } })
+
+
+Read -> Range of queries 
+
+
+Comparison Operators
+
+Less Than -> 
+db.users.find({ age: { $lt: 20 } })
+$lt - less than 
+$gt - greater than
+$lte - less than equal to
+$gte - greater than equal to
+$ne - not equal to 
+
+
+Logical Operators
+
+AND -> A AND B
+age: 20
+address: Delhi 
+
+
+db.users.find({
+    $and:[
+        { age: 20},
+        {address:"Delhi"}
+    ]
+})
+
+
+OR -> A OR B
+
+db.users.find({
+    $or:[
+        { age: 20},
+        {address:"Delhi"}
+    ]
+})
+
+
+
+
+NOT     -> !A 
+
+db.users.find({age:{$not:{$gt:20}}})
+
+
+
+exists-> address 
+
+-> delivery api  -> address
+-> payment gateway -> sender's id 
+
+db.collection.find({address:{ $exists : true }})
+
+
+Q -> Write a query that finds all documents in a collection (e.g., "movieDetails") where the document field "year" is less than or equal to 1970.
+
+-> db.moviedetails.find({year:{$lte:1970}})
+
+
+Q-> Write a query to retrieve movies made after 1965 but on or before 1970 from the collection "movieDetails."
+
+2 conditions 
+> 1965
+<= 1970
+
+AND - db.movies.find({
+    $and:[
+        {
+        year: { $gt:1965}
+    },
+    {
+        year: { $lte: 1970}
+    }
+    ]
+})
+
+ , -> db.movies.find({
+    year:{$gt:1965, $lte:1970}
+ })
+
+
+Q-> Create a query for a collection called "products" to find documents where the "price" field is between 100 and 500 (inclusive of 100 but not necessarily 500).
+
+-> db.products.find({
+    price: { $gte:100, $lte: 500 }
+})
+
+Q-> Construct a query to find documents from a "sales" collection where the "quantity" is in the list (bonus)
+(10, 20, 30)
+
+
+-> db.sales.find({
+    quantity:{ $in:[10, 20, 30] }
+})
+
+-> db.sales.find({
+    $or:[
+        {quantity:10},
+        {quantity:20},
+        {quantity:30},
+
+    ]
+})
+
+
+
+UPDATE 
+
+-> user:{
+    id: 10,
+    name:"elon",
+    address:"california",
+    age:50
+    email:elon@tesla.com,
+    password:"xae12sh"
+}
+
+elon@tesla.com -> password change 
+
+
+1.identify the document -> unique value  
+2.update the value
+
+UPDATE ONE
+db.collection.updateOne(
+    {email:"elon@tesla.com"},
+    { $set : { password : "MOE"} }
+)
+
+
+UPDATE MANY
+db.collection.updateMany(
+    {status:"pending"},
+    { $set : { status : "Completed"} }
+)
+
+
+Delete
+
+db.users.deleteOne({email:"elon@tesla.com"})
+
+db.users.deleteMany({status:"completed"})
